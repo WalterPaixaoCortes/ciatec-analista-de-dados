@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Banco de Dados dos Simpsons</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+@page { size: A4; background-image: url("logo.png"); background-size: 50%; background-repeat: no-repeat; background-position-x: 50%; background-position-y: 50%; font-family: Verdana, Geneva, Tahoma, sans-serif; background-color: white; color: black; margin-bottom: 4cm; margin-top: 4cm; margin-left: 3cm; margin-right: 3cm } @page:left { } 
+</style>
+        
+    </head>
+    <body>
+        <h1 id="Banco-de-Dados-dos-Simpsons">Banco de Dados dos Simpsons</h1>
+<h2 id="Modelo-F%C3%ADsico">Modelo Físico</h2>
+<p><img src="file:///c:\Work\docs\ciatec\analise-de-dados\material-de-aula\imagens\simpsons_data_model.png" alt="Modelo Físico do Banco de Dados dos Simpsons"></p>
+<h2 id="Dicion%C3%A1rio-de-Dados">Dicionário de Dados</h2>
+<h3 id="Tabela-characters-personagens">Tabela characters (personagens)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID do personagem</td>
+</tr>
+<tr>
+<td>2</td>
+<td>name</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Nome</td>
+</tr>
+<tr>
+<td>3</td>
+<td>normalized_name</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Nome normalizado</td>
+</tr>
+<tr>
+<td>4</td>
+<td>gender</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Gênero</td>
+</tr>
+<tr>
+<td>5</td>
+<td>type</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Tipo</td>
+</tr>
+<tr>
+<td>6</td>
+<td>main_name</td>
+<td>varchar(100)</td>
+<td></td>
+<td>YES</td>
+<td>Nome do personagem principal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-episodeminutes-personagens-por-minuto-do-epis%C3%B3dio">Tabela episode_minutes (personagens por minuto do episódio)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>episode_id</td>
+<td>int(11)</td>
+<td>MUL</td>
+<td>YES</td>
+<td>ID do episódio</td>
+</tr>
+<tr>
+<td>2</td>
+<td>character_id</td>
+<td>int(11)</td>
+<td>MUL</td>
+<td>YES</td>
+<td>ID do personagem</td>
+</tr>
+<tr>
+<td>3</td>
+<td>episode_minute</td>
+<td>decimal(12,0)</td>
+<td></td>
+<td>YES</td>
+<td>Minuto do episódio</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-episodes-epis%C3%B3dios">Tabela episodes (episódios)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID do episódio</td>
+</tr>
+<tr>
+<td>2</td>
+<td>title</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Título</td>
+</tr>
+<tr>
+<td>3</td>
+<td>original_air_date</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Data em que foi ao ar</td>
+</tr>
+<tr>
+<td>4</td>
+<td>production_code</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Código de produção</td>
+</tr>
+<tr>
+<td>5</td>
+<td>season</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Temporada</td>
+</tr>
+<tr>
+<td>6</td>
+<td>number_in_season</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Número do episódio na temporada</td>
+</tr>
+<tr>
+<td>7</td>
+<td>number_in_series</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Número do episódio na série</td>
+</tr>
+<tr>
+<td>8</td>
+<td>us_viewers_in_millions</td>
+<td>double</td>
+<td></td>
+<td>YES</td>
+<td>Espectadores nos US em milhões</td>
+</tr>
+<tr>
+<td>9</td>
+<td>views</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Número de views</td>
+</tr>
+<tr>
+<td>10</td>
+<td>imdb_rating</td>
+<td>double</td>
+<td></td>
+<td>YES</td>
+<td>Nota do IMDB</td>
+</tr>
+<tr>
+<td>11</td>
+<td>imdb_votes</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Votos no IMDB</td>
+</tr>
+<tr>
+<td>12</td>
+<td>image_url</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>URL de imagem do episódio</td>
+</tr>
+<tr>
+<td>13</td>
+<td>video_url</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>URL de vídeo (trailer) do episódio</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-locations-loca%C3%A7%C3%B5es">Tabela locations (locações)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID da locação</td>
+</tr>
+<tr>
+<td>2</td>
+<td>name</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Nome</td>
+</tr>
+<tr>
+<td>3</td>
+<td>normalized_name</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Nome normalizado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-scriptlines-falas">Tabela script_lines (falas)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID da fala</td>
+</tr>
+<tr>
+<td>2</td>
+<td>episode_id</td>
+<td>int(11)</td>
+<td>MUL</td>
+<td>YES</td>
+<td>ID do episódio</td>
+</tr>
+<tr>
+<td>3</td>
+<td>number</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Número da fala</td>
+</tr>
+<tr>
+<td>4</td>
+<td>raw_text</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Texto bruto</td>
+</tr>
+<tr>
+<td>5</td>
+<td>timestamp_in_ms</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Data Hora da fala em milissegundos</td>
+</tr>
+<tr>
+<td>6</td>
+<td>speaking_line</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Fala</td>
+</tr>
+<tr>
+<td>7</td>
+<td>character_id</td>
+<td>int(11)</td>
+<td>MUL</td>
+<td>YES</td>
+<td>ID do personagem</td>
+</tr>
+<tr>
+<td>8</td>
+<td>location_id</td>
+<td>int(11)</td>
+<td>MUL</td>
+<td>YES</td>
+<td>ID da locação</td>
+</tr>
+<tr>
+<td>9</td>
+<td>raw_character_text</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Nome personagem</td>
+</tr>
+<tr>
+<td>10</td>
+<td>raw_location_text</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Nome localização</td>
+</tr>
+<tr>
+<td>11</td>
+<td>spoken_words</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>palavras faladas</td>
+</tr>
+<tr>
+<td>12</td>
+<td>normalized_text</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Fala normalizada</td>
+</tr>
+<tr>
+<td>13</td>
+<td>word_count</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Contagem de palavras</td>
+</tr>
+<tr>
+<td>14</td>
+<td>character_name</td>
+<td>varchar(100)</td>
+<td>MUL</td>
+<td>YES</td>
+<td>Nome do personagem</td>
+</tr>
+</tbody>
+</table>
+
+    </body>
+    </html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Banco de Dados do Campeonato Brasileiro</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+@page { size: A4; background-image: url("logo.png"); background-size: 50%; background-repeat: no-repeat; background-position-x: 50%; background-position-y: 50%; font-family: Verdana, Geneva, Tahoma, sans-serif; background-color: white; color: black; margin-bottom: 4cm; margin-top: 4cm; margin-left: 3cm; margin-right: 3cm } @page:left { } 
+</style>
+        
+    </head>
+    <body>
+        <h1 id="Banco-de-Dados-do-Campeonato-Brasileiro">Banco de Dados do Campeonato Brasileiro</h1>
+<h2 id="Modelo-F%C3%ADsico">Modelo Físico</h2>
+<p><img src="file:///c:\Work\docs\ciatec\analise-de-dados\material-de-aula\imagens\got_data_model.png" alt="Modelo Físico do Banco de Dados do Brasileirão"></p>
+<h2 id="Dicion%C3%A1rio-de-Dados">Dicionário de Dados</h2>
+<h3 id="Tabela-affiliations-afilia%C3%A7%C3%B5es">Tabela affiliations (afiliações)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>characterId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Id do personagem</td>
+</tr>
+<tr>
+<td>2</td>
+<td>houseName</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Casa de GOT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-characters-personagens">Tabela characters (personagens)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>characterId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID do personagem</td>
+</tr>
+<tr>
+<td>2</td>
+<td>characterName</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Nome</td>
+</tr>
+<tr>
+<td>3</td>
+<td>characterLink</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>URL para personagem no IMDB</td>
+</tr>
+<tr>
+<td>4</td>
+<td>actorName</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Nome do ator</td>
+</tr>
+<tr>
+<td>5</td>
+<td>actorLink</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>URL para ator no IMDB</td>
+</tr>
+<tr>
+<td>6</td>
+<td>royal</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>É da realeza?</td>
+</tr>
+<tr>
+<td>7</td>
+<td>characterImageThumb</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>URL para imagem pequena do personagem</td>
+</tr>
+<tr>
+<td>8</td>
+<td>characterImageFull</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>URL para imagem grande do personagem</td>
+</tr>
+<tr>
+<td>9</td>
+<td>nickname</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Apelido</td>
+</tr>
+<tr>
+<td>10</td>
+<td>kingsguard</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>É da guarda do rei?</td>
+</tr>
+<tr>
+<td>11</td>
+<td>gender</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Gênero</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-episodes-epis%C3%B3dios">Tabela episodes (episódios)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>seasonNum</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Temporada</td>
+</tr>
+<tr>
+<td>2</td>
+<td>episodeNum</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Episódio</td>
+</tr>
+<tr>
+<td>3</td>
+<td>episodeTitle</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Título do Episódio</td>
+</tr>
+<tr>
+<td>4</td>
+<td>episodeLink</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>URL para Episódio no IMDB</td>
+</tr>
+<tr>
+<td>5</td>
+<td>episodeAirDate</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Data do Episódio</td>
+</tr>
+<tr>
+<td>6</td>
+<td>episodeDescription</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Descrição do Episódio</td>
+</tr>
+<tr>
+<td>7</td>
+<td>episodeId</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>ID do episódio</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-relationships-relacionamentos">Tabela relationships (relacionamentos)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>characterId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID do personagem</td>
+</tr>
+<tr>
+<td>2</td>
+<td>related_characterId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID do personagem com quem se relaciona</td>
+</tr>
+<tr>
+<td>3</td>
+<td>relation_type</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Tipo de relação</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-scenes-cenas">Tabela scenes (cenas)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>episodeId</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>ID do episódio</td>
+</tr>
+<tr>
+<td>2</td>
+<td>orderId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Ordem</td>
+</tr>
+<tr>
+<td>3</td>
+<td>sceneStart</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Início da Cena</td>
+</tr>
+<tr>
+<td>4</td>
+<td>sceneEnd</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Fim da Cena</td>
+</tr>
+<tr>
+<td>5</td>
+<td>location</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Locação</td>
+</tr>
+<tr>
+<td>6</td>
+<td>subLocation</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Sublocação</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-scenesactions-a%C3%A7%C3%B5es-em-cena">Tabela scenes_actions (ações em cena)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>episodeId</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>ID do episódio</td>
+</tr>
+<tr>
+<td>2</td>
+<td>orderId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Ordem</td>
+</tr>
+<tr>
+<td>3</td>
+<td>characterId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID do personagem</td>
+</tr>
+<tr>
+<td>4</td>
+<td>action</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Ação</td>
+</tr>
+<tr>
+<td>5</td>
+<td>related_characterId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID do personagem relacionado</td>
+</tr>
+<tr>
+<td>6</td>
+<td>when</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Quando</td>
+</tr>
+<tr>
+<td>7</td>
+<td>type</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Tipo de ação</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-scenescharacters-personagens-em-cena">Tabela scenes_characters (personagens em cena)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>episodeId</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>ID do episódio</td>
+</tr>
+<tr>
+<td>2</td>
+<td>orderId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Ordem</td>
+</tr>
+<tr>
+<td>3</td>
+<td>characterId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID do personagem</td>
+</tr>
+<tr>
+<td>4</td>
+<td>alive</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Estava vivo?</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-scenesweapons-armas-em-cena">Tabela scenes_weapons (armas em cena)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>episodeId</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>ID do episódio</td>
+</tr>
+<tr>
+<td>2</td>
+<td>orderId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Ordem</td>
+</tr>
+<tr>
+<td>3</td>
+<td>characterId</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID do personagem</td>
+</tr>
+<tr>
+<td>4</td>
+<td>action</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Ação</td>
+</tr>
+<tr>
+<td>5</td>
+<td>weapon</td>
+<td>text</td>
+<td></td>
+<td>YES</td>
+<td>Arma</td>
+</tr>
+</tbody>
+</table>
+
+    </body>
+    </html>

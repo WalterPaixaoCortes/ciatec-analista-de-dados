@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Banco de Dados do Campeonato Brasileiro</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+@page { size: A4; background-image: url("logo.png"); background-size: 50%; background-repeat: no-repeat; background-position-x: 50%; background-position-y: 50%; font-family: Verdana, Geneva, Tahoma, sans-serif; background-color: white; color: black; margin-bottom: 4cm; margin-top: 4cm; margin-left: 3cm; margin-right: 3cm } @page:left { } 
+</style>
+        
+    </head>
+    <body>
+        <h1 id="Banco-de-Dados-do-Campeonato-Brasileiro">Banco de Dados do Campeonato Brasileiro</h1>
+<h2 id="Modelo-F%C3%ADsico">Modelo Físico</h2>
+<p><img src="file:///c:\Work\docs\ciatec\analise-de-dados\material-de-aula\imagens\brasileirao_data_model.png" alt="Modelo Físico do Banco de Dados do Brasileirão"></p>
+<h2 id="Dicion%C3%A1rio-de-Dados">Dicionário de Dados</h2>
+<h3 id="Tabela-match-partida">Tabela match (partida)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>match_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID da partida</td>
+</tr>
+<tr>
+<td>2</td>
+<td>match_day</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Dia da partida</td>
+</tr>
+<tr>
+<td>3</td>
+<td>match_month</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Mês da partida</td>
+</tr>
+<tr>
+<td>4</td>
+<td>match_year</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Ano da partida</td>
+</tr>
+<tr>
+<td>5</td>
+<td>match_hour</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Hora da partida</td>
+</tr>
+<tr>
+<td>6</td>
+<td>match_minute</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Minuto da partida</td>
+</tr>
+<tr>
+<td>7</td>
+<td>match_round</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Rodada</td>
+</tr>
+<tr>
+<td>8</td>
+<td>home_team_id</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>ID do time da casa</td>
+</tr>
+<tr>
+<td>9</td>
+<td>away_team_id</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>ID do time visitante</td>
+</tr>
+<tr>
+<td>10</td>
+<td>home_goals</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Gols do time da casa</td>
+</tr>
+<tr>
+<td>11</td>
+<td>away_goals</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Gols do time visitante</td>
+</tr>
+<tr>
+<td>12</td>
+<td>season_id</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>Temporada</td>
+</tr>
+<tr>
+<td>13</td>
+<td>match_result</td>
+<td>varchar(2)</td>
+<td></td>
+<td>YES</td>
+<td>Resultado da partida</td>
+</tr>
+<tr>
+<td>14</td>
+<td>home_goals_half</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Gols do time da casa no primeiro tempo</td>
+</tr>
+<tr>
+<td>15</td>
+<td>away_goals_half</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Gols do time visitante no primeiro tempo</td>
+</tr>
+<tr>
+<td>16</td>
+<td>home_red_cards</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Cartões vermelhos do time da casa</td>
+</tr>
+<tr>
+<td>17</td>
+<td>away_red_cards</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Cartões vermelhos do time visitante</td>
+</tr>
+<tr>
+<td>18</td>
+<td>stadium_id</td>
+<td>int(11)</td>
+<td></td>
+<td>NO</td>
+<td>ID do estádio</td>
+</tr>
+<tr>
+<td>19</td>
+<td>created_by</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Criador do registro</td>
+</tr>
+<tr>
+<td>20</td>
+<td>created_date</td>
+<td>datetime</td>
+<td></td>
+<td>YES</td>
+<td>Data do registro</td>
+</tr>
+<tr>
+<td>21</td>
+<td>modified_by</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Modificador do registro</td>
+</tr>
+<tr>
+<td>22</td>
+<td>modified_date</td>
+<td>datetime</td>
+<td></td>
+<td>YES</td>
+<td>Data da modificação</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-player-jogador">Tabela player (jogador)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>player_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID do jogador</td>
+</tr>
+<tr>
+<td>2</td>
+<td>player_name</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Nome do jogador</td>
+</tr>
+<tr>
+<td>3</td>
+<td>team_id</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID do time do jogador</td>
+</tr>
+<tr>
+<td>4</td>
+<td>player_position</td>
+<td>varchar(20)</td>
+<td></td>
+<td>YES</td>
+<td>Posição do jogador</td>
+</tr>
+<tr>
+<td>5</td>
+<td>season_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>Temporada</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-scout-estat%C3%ADsticas-do-jogador">Tabela scout (estatísticas do jogador)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>player_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID do jogador</td>
+</tr>
+<tr>
+<td>2</td>
+<td>team_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID do time</td>
+</tr>
+<tr>
+<td>3</td>
+<td>season_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>Temporada</td>
+</tr>
+<tr>
+<td>4</td>
+<td>season_round</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>Rodada</td>
+</tr>
+<tr>
+<td>5</td>
+<td>played</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Jogou?</td>
+</tr>
+<tr>
+<td>6</td>
+<td>position</td>
+<td>varchar(20)</td>
+<td></td>
+<td>YES</td>
+<td>Posição do jogador</td>
+</tr>
+<tr>
+<td>7</td>
+<td>home_player</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Time da casa</td>
+</tr>
+<tr>
+<td>8</td>
+<td>starter</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Iniciou jogando</td>
+</tr>
+<tr>
+<td>9</td>
+<td>replaced</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Foi substituído</td>
+</tr>
+<tr>
+<td>10</td>
+<td>time_played</td>
+<td>float</td>
+<td></td>
+<td>YES</td>
+<td>Tempo jogado</td>
+</tr>
+<tr>
+<td>11</td>
+<td>player_score</td>
+<td>float</td>
+<td></td>
+<td>YES</td>
+<td>Score do jogador</td>
+</tr>
+<tr>
+<td>12</td>
+<td>foul_taken</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Faltas recebidas pelo jogador</td>
+</tr>
+<tr>
+<td>13</td>
+<td>wrong_pass</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Passes errados do jogador</td>
+</tr>
+<tr>
+<td>14</td>
+<td>assist</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Assistências do jogador</td>
+</tr>
+<tr>
+<td>15</td>
+<td>near_miss_finishing</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Chutes &quot;na trave&quot;</td>
+</tr>
+<tr>
+<td>16</td>
+<td>defended_finishing</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Chutes defendidos</td>
+</tr>
+<tr>
+<td>17</td>
+<td>out_finishing</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Chutes para fora</td>
+</tr>
+<tr>
+<td>18</td>
+<td>goal</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Gols</td>
+</tr>
+<tr>
+<td>19</td>
+<td>impediment</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Impedimentos</td>
+</tr>
+<tr>
+<td>20</td>
+<td>missed_penality</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Penaltis perdidos</td>
+</tr>
+<tr>
+<td>21</td>
+<td>steal</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Roubadas de bola</td>
+</tr>
+<tr>
+<td>22</td>
+<td>foul_made</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Faltas cometidas</td>
+</tr>
+<tr>
+<td>23</td>
+<td>against_goal</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Gols contra</td>
+</tr>
+<tr>
+<td>24</td>
+<td>yellow_card</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Cartões amarelos</td>
+</tr>
+<tr>
+<td>25</td>
+<td>red_card</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Cartões vermelhos</td>
+</tr>
+<tr>
+<td>26</td>
+<td>no_goal_game</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Jogo sem gol</td>
+</tr>
+<tr>
+<td>27</td>
+<td>hard_defence</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Defesa difícil</td>
+</tr>
+<tr>
+<td>28</td>
+<td>penality_defence</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Penalti defendido</td>
+</tr>
+<tr>
+<td>29</td>
+<td>goal_taken</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Gols sofridos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-season-temporada">Tabela season (temporada)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>season_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID da Temporada</td>
+</tr>
+<tr>
+<td>2</td>
+<td>season_name</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Nome</td>
+</tr>
+<tr>
+<td>3</td>
+<td>season_rounds</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Número de Rodadas</td>
+</tr>
+<tr>
+<td>4</td>
+<td>season_start_date</td>
+<td>datetime</td>
+<td></td>
+<td>YES</td>
+<td>Data de Início</td>
+</tr>
+<tr>
+<td>5</td>
+<td>season_end_date</td>
+<td>datetime</td>
+<td></td>
+<td>YES</td>
+<td>Data de Término</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-stadium-est%C3%A1dio">Tabela stadium (estádio)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>stadium_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID do Estádio</td>
+</tr>
+<tr>
+<td>2</td>
+<td>stadium_name</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Nome do Estádio</td>
+</tr>
+<tr>
+<td>3</td>
+<td>stadium_nickname</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Apelido</td>
+</tr>
+<tr>
+<td>4</td>
+<td>stadium_city</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Cidade</td>
+</tr>
+<tr>
+<td>5</td>
+<td>stadium_state</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Estado</td>
+</tr>
+<tr>
+<td>6</td>
+<td>stadium_country</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>País</td>
+</tr>
+<tr>
+<td>7</td>
+<td>stadium_localization</td>
+<td>varchar(400)</td>
+<td></td>
+<td>YES</td>
+<td>Localização</td>
+</tr>
+<tr>
+<td>8</td>
+<td>stadium_address</td>
+<td>varchar(100)</td>
+<td></td>
+<td>YES</td>
+<td>Endereço</td>
+</tr>
+<tr>
+<td>9</td>
+<td>stadium_capacity</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>Capacidade</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Tabela-team-time">Tabela team (time)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nome Coluna</th>
+<th>Tipo de Dados</th>
+<th>Tipo Chave</th>
+<th>Aceita Nulo?</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>team_id</td>
+<td>int(11)</td>
+<td>PRI</td>
+<td>NO</td>
+<td>ID do time</td>
+</tr>
+<tr>
+<td>2</td>
+<td>team_name</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Nome do time</td>
+</tr>
+<tr>
+<td>3</td>
+<td>team_coach</td>
+<td>varchar(50)</td>
+<td></td>
+<td>YES</td>
+<td>Treinador Atual</td>
+</tr>
+<tr>
+<td>4</td>
+<td>team_foundation</td>
+<td>datetime</td>
+<td></td>
+<td>YES</td>
+<td>Data de Fundação</td>
+</tr>
+<tr>
+<td>5</td>
+<td>team_average_age</td>
+<td>float</td>
+<td></td>
+<td>YES</td>
+<td>Média de idade</td>
+</tr>
+<tr>
+<td>6</td>
+<td>team_acronym</td>
+<td>varchar(10)</td>
+<td></td>
+<td>YES</td>
+<td>Acrônimo</td>
+</tr>
+<tr>
+<td>7</td>
+<td>team_cartola_id</td>
+<td>int(11)</td>
+<td></td>
+<td>YES</td>
+<td>ID no cartola</td>
+</tr>
+</tbody>
+</table>
+
+    </body>
+    </html>
