@@ -1,13 +1,10 @@
-# Material Complementar
-![Capa](imagens/apostila-analista.png)
-
+# Material Analista de Dados
 
 ## Bem-Vindo!
 
-Bem-vindo ao Curso de Analista de Dados!
+Bem-vindo ao repositório!
 
-Temos aqui uma série de materiais complementares que você utilizará durante o curso. Aproveite!
-
+Temos aqui uma série de materiais coletados para ajudar em sua jornada para se tornar uma pessoa analista de dados. Aproveite!
 
 ### Material de Apoio
 
@@ -15,9 +12,9 @@ Temos aqui uma série de materiais complementares que você utilizará durante o
 - [Passo a Passo Workbench - Banco e Usuários](apoio/passo_a_passo_workbench.pdf) - um tutorial que ensina a usar o MySQL Workbench para criar bancos de dados e usuários.
 
 
-### Material para Sala de Aula
+### Material para praticar
 
-Aqui teremos alguns arquivos que serão usados ao longo das aulas, basicamente scripts em SQL.
+Aqui teremos alguns arquivos que podem ser usados para montar bancos de dados para você estudar. Basicamente, temos scripts em SQL.
 - Documentação
   - [Dicionário de Dados do Banco do Campeonato Brasileiro](brasileirao.md)
   - [Dicionário de Dados do Banco dos Simpsons](simpsons.md)
